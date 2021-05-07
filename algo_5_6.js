@@ -99,4 +99,8 @@ function partition(nums) {
     return (nums);
 }
 
-// console.log(partition(nums2));
+module.exports = {
+    partition,
+    };
+    
+  // console.log(partition(nums2));
