@@ -66,9 +66,9 @@ console.log(twoSum(nums1, targetSum1))
     Hard Bonus: make it O(n) time
 */
 
-const nums2 = [1, 1, 1, 2, 2, 3];
-const k2 = 2;
-const expected2 = [1, 2];
+const nums5 = [1, 1, 1, 2, 2, 3];
+const k5 = 2;
+const expected5 = [1, 2];
 // Explanation: return the two most frequent elements, 1 and 2 are the two most frequent elements
 
 const nums3 = [0, 0, 0, 2, 2, 3];
@@ -117,6 +117,10 @@ function kMostFrequent(nums, k) {
     // since keys are strings, convert the numKey back to an int when adding it to the array
     for (const numKey in freq) {
         const frequency = freq[numKey];
+        console.log(freq[numKey])
+        console.log(numKey)
+        console.log("++++++++++++++++++++++")
+
 
         if (inverseFreq.hasOwnProperty(frequency)) {
             inverseFreq[frequency].push(+numKey);
