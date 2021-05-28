@@ -40,7 +40,7 @@ let isSubString2 = word => word.filter((word1 => word.some(word2 => word2.includ
 function isSubString(words) {
     newWordArr = [];
     for(let i = 0 ; i<words.length; i++){
-        for(let j = 0; j< words.length; j++){
+        for(let j = 0; j< words.length; j++){ // make two runners through the words array checking if the second runner contains the first
             if(words[i].length < words[j].length){
                 if(words[j].includes(words[i])){
                     newWordArr.push(words[i]);
