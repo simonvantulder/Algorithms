@@ -13,12 +13,14 @@ const names3 = ["Wright, Jane"];
 // Output: ["Dr. Jane Wright"]
 
 const addHonor = (honorific, fullNames) => {
-    let honorableArr = []
+    let honorableArr = [];
+    let nameTable = {};
     for (let i = 0; i < fullNames.length; i++) {
-        let name = i.split(", ");
-        honorableArr.push(honorific, name[1], name[0])
-        // honorableArr.push( honorific )
+        let name = fullNames[i].split(", ");
+        nameTable[i] = `${honorific} ${name[1]} ${name[0]}` 
+        honorableArr.push(nameTable[i])
     }
+
     return honorableArr
 }
-console.log(addHonor(honorific1, names1))
+console.log(addHonor(honorific3, names3))
