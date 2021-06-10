@@ -16,10 +16,10 @@
 // "abcd"
 
 /*
-  Given a string
-  return whether or not it's possible to make a palindrome out of the string's characters
+    Given a string
+    return whether or not it's possible to make a palindrome out of the string's characters
 
-  What is it about a string that makes it possible for it to be a palindrome?
+    What is it about a string that makes it possible for it to be a palindrome?
 */
 
 const str1 = "aabbccdde";
@@ -47,10 +47,13 @@ const expected5 = true;
  */
 
 function canStringBecomePalindrome(str) {
+    //return if empty string
     if(str.length === 0 ){
         return false;
     }
-    const freq = {}
+
+    const freq = {};
+    //create dictionary of letters in the word and count
     for(let i= 0; i < str.length; i++){
         if(freq.hasOwnProperty(str[i])){
             freq[str[i]]++;
@@ -67,11 +70,13 @@ function canStringBecomePalindrome(str) {
             count++;
         }
     }
+    
+    //if the count of nums that appear odd number of times >1 it cannot be a palindrome
     // if(count > 1){
     //     return false;
     // }
     // return true;
-    return count > 1 ? false : true;
+    return count > 1 ? false : true; 
 }
 
 console.log(canStringBecomePalindrome(str2));
