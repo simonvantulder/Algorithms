@@ -11,8 +11,8 @@ let moveZeros = function (arr) {
 //refactored
 let moveZeros2 = function (arr) {
     return [
-        ...(arr.filter(n => n !== 0)),
-        ...(arr.filter(n => n === 0))
+        ...(arr.filter(n => n !== 0)), //return list with none of the zeros
+        ...(arr.filter(n => n === 0)) //return the list with only the zeros
     ];
 }
 console.log(moveZeros([1, 2, 0, 1, 0, 1, 0, 3, 0, 1]))
