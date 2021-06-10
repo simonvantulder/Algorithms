@@ -82,7 +82,7 @@ const expected4 = [1, 2, 3];
 /* 
     Explanation: 3 is the only value that would be passed in for k because it is the only value for k that has
     a valid solution. Since 1, 2, and 3, all occur 3 times, they are all the most frequent ints, so there is no
-      1 most frequent int, or 2 most frequent int, but there are 3 most frequent ints. 
+    1 most frequent int, or 2 most frequent int, but there are 3 most frequent ints. 
 */
 
 /**
