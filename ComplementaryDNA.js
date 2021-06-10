@@ -7,6 +7,7 @@ function DNAStrand(dna) {
         "C" : "G",
         "G" : "C"
     }
+    
     for( let i = 0; i < dna.length; i++){
         if(pairs.hasOwnProperty(dna[i])){
             complementaryDNA += pairs[dna[i]]
