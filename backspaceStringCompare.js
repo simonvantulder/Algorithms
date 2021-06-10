@@ -30,12 +30,6 @@ function backspaceStringCompare(str1, str2) {
             newStr2.push(str2[i]);
         }
     }
-    // convert to string for comparison
-    // newStr1 = newStr1.toString();
-    // newStr2 = newStr2.toString();
-
-    // console.log(newStr1, newStr2);
-
     return newStr1.toString() === newStr2.toString() ? true : false;
 }
 
