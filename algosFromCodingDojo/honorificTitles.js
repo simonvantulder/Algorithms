@@ -14,11 +14,11 @@ const names3 = ["Wright, Jane"];
 
 const addHonor = (honorific, fullNames) => {
     let honorableArr = [];
-    let nameTable = {};
+
+    // split the name & remove comma, add to newArr in FName, LName format 
     for (let i = 0; i < fullNames.length; i++) {
         let name = fullNames[i].split(", ");
-        nameTable[i] = `${honorific} ${name[1]} ${name[0]}` 
-        honorableArr.push(nameTable[i])
+        honorableArr.push(`${honorific} ${name[1]} ${name[0]}` )
     }
 
     return honorableArr

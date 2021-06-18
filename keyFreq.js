@@ -104,7 +104,7 @@ function filterByKey(items, searchFor, searchBy, searchMethod = "startsWith") {
     return matchedSearches;
 }
 
-//oneLine Solution 
+//one line Solution 
 function filterByKey(items, searchFor, searchBy, stringSearchMethod = "startsWith") {
     return items.filter((item) => item[searchBy].toLowerCase()[stringSearchMethod](searchFor.toLowerCase()));
 }

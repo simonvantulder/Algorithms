@@ -1,3 +1,6 @@
+
+// join the arr, parse the string into binary based numbers
+// Time Complexity O(n)
 const binaryArrayToNumber = arr => {
     let binaryStr = ""
     arr.map((i) => binaryStr += i);
