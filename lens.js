@@ -61,7 +61,6 @@ const expected5 = user;
 
 /**
   
- 
  * Retrieves the value at the end of the path of keys or null.
  * - Time O(?).
  * - Space O(?).
@@ -71,12 +70,15 @@ const expected5 = user;
  */
 function lens(obj, keys) {
 
+  //return if empty
     if (keys.length == 0) {
         return obj;
     }
 
     let tempObj = obj;
 
+    //for each level existing check if the next level deeper also exists. 
+    //if get all the way to the desired element, return else return null
     for (let i = 0; i < keys.length; i++) {
         if (tempObj.hasOwnProperty(keys[i]) && i != keys.length - 1) {
             tempObj = tempObj[keys[i]];

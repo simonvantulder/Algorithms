@@ -92,7 +92,7 @@ function crossword2x2(puzzle) {
 }
 
 
-//refactored
+//refactored O(n)
 const Crossword2x2 = ([[a, b], [c, d]]) => (
     letter = [a, b, c, d].filter(x => x != "_" && x != "#")[0],
     r = [letter === b, letter === a, letter === d, letter === c].some((v, i) => v && [a, b, c, d][i] == "#"),
