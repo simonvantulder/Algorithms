@@ -84,19 +84,19 @@ const expected4 = [
 /**
  * Filters the given items based on the search criteria using a startsWith
  * search method.
- * - Time: O(?).
- * - Space: O(?).
+ * - Time: O(n).
+ * - Space: O(1?).
  * @param {Array<Object>} items The items to be filtered.
  * @param {string} searchBy The key to search by.
  * @param {string} searchFor The value of the given key to search for.
  * @returns {Array<Objects>} The matched items.
  */
+
+// searth method is startsWith by default
 function filterByKey(items, searchFor, searchBy, searchMethod = "startsWith") {
-    // items.filter(searchFor);
     let matchedSearches = [];
     for (const personObject of items) {
-        // console.log(personObject)
-        // console["log"](personObject[searchBy])
+        //change strings to lowercase to simplify matching, if match found push to results(matchedSearches)
         if (personObject[searchBy].toLowerCase()[searchMethod](searchFor.toLowerCase())) {
             matchedSearches.push(personObject);
         }

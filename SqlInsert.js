@@ -31,13 +31,16 @@ const expected2 =
  *    columns and values are extracted from columnValuePairs.
  */
 function insert(tableName, columnValuePairs) {
+  // setup 
   columnStr = `INSERT INTO ${tableName} (`;
   valuesStr = `) VALUES (`
+// build column section of query string
   for(key in columnValuePairs){
     columnStr+= `${key}, `;
     if(typeof columnValuePairs[key] === "string"){
       valuesStr+= `'${columnValuePairs[key]}', `;
     }
+    // build boolean section of query string
     else if(typeof columnValuePairs[key] === "boolean"){
       if(columnValuePairs[key] === true){
         valuesStr+= `1, `;
@@ -63,7 +66,7 @@ function insert(tableName, columnValuePairs) {
  */
 function insertFunctional(tableName, columnValuePairs) {
   const columns = Object.keys(columnValuePairs).join(", ");
-
+//see normal version for comments
   const values = Object.values(columnValuePairs)
     .map((val) => (typeof val === "string" ? `'${val}'` : typeof val === "boolean" ? val === true ? `1` :`0` : val))
     .join(", ");

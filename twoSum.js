@@ -100,10 +100,12 @@ function kMostFrequent(nums, k) {
     const inverseFreq = {};
     let maxFreq = 0;
 
+    //loop through and find the freq of each item
     for (const num of nums) {
         if (freq.hasOwnProperty(num)) {
             freq[num]++;
 
+            //reset max when eclipsed
             if (freq[num] > maxFreq) {
                 maxFreq = freq[num];
             }

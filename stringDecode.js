@@ -20,6 +20,7 @@ const str4 = "bbcc";
 const expected4 = "bbcc";
 
 function stringEncode(str) {
+    //edge case and setup
     if (str.length < 2 || isNaN(str[0]) === false) {
         return str;
     }
@@ -27,6 +28,7 @@ function stringEncode(str) {
     let currentChar = str[0];
     let charCount = 0;
 
+    //encode string & increment count to test for relative length
     for (let i = 0; i < str.length; i++) {
         if (str[i] !== currentChar) {
             codedStr += currentChar += charCount;
@@ -36,6 +38,7 @@ function stringEncode(str) {
         charCount++;
 
     }
+    //return encoded string if shorter
     return codedStr.length < str.length ? codedStr : str;
     // return codedStr;
 

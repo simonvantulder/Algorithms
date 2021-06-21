@@ -23,22 +23,22 @@ const lengthOfLongestSubstr = (s) => {
     let maxCount = count = startIdx = 0;
 
     for (let i = 0; i < s.length; i++) {
+        //enter into dict, skip duplicates
         if (!freq.hasOwnProperty(s[i])) {
             freq[s[i]] = i;
             count++;
+
+            // reset maxCount when eclipsed
             if (count > maxCount) {
                 maxCount = count;
             }
+            // reset count & freq when duplicate found
         } else {
             i = freq[s[i]];
             freq = {};
-            console.log("freq[s[i]]  = ", freq[s[i]] )
             count = 0;
         }
-        console.log("s[i] = ", s[i])
-        console.log("i = ", i)
     }
-    console.log(freq)
     return maxCount
 }
 

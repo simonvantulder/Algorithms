@@ -3,8 +3,7 @@
     primitives (ints, strings, booleans) and a list of objects.
     return any object that matches all the key value pairs in the search
     criteria object.
-    Bonus: write a 2nd solution using build in methods to practice functional
-    programming.
+
 */
 
 const items = [
@@ -34,30 +33,33 @@ const expected2 = [
 /**
  * Finds the objects that match the given search criteria.
  * - Time: O(?).
- * - Space: O(?).
  * @param {Object} criteria
  * @param {Array<Object>} collection
  * @returns {Array<Object>} The found objects.
  */
 
 function findObjects(criteria, collection) {
-    let resultArray = [];
-    let keysArray = Object.keys(criteria);
+    let resultArr = [];
+    let keysArr = Object.keys(criteria);
     for (let i = 0; i < collection.length; i++) {
         let j = 0;
-        let matchCounter = 0;
+        let matchIdx = 0;
+
+        // for each match -> increment; 
         while (
-            collection[i].hasOwnProperty(keysArray[j]) &&
-            criteria[keysArray[j]] == collection[i][keysArray[j]]
+            collection[i].hasOwnProperty(keysArr[j]) &&
+            criteria[keysArr[j]] == collection[i][keysArr[j]]
         ) {
-            matchCounter++;
+            matchIdx++;
             j++;
         }
-        if (matchCounter == keysArray.length) {
-            resultArray.push(collection[i]);
+        //push to returnArr if match 
+        if (matchIdx == keysArr.length) {
+            resultArr.push(collection[i]);
         }
     }
-    return resultArray;
+    //return all items 
+    return resultArr;
 }
 console.log(findObjects(searchCriteria1, items));
 console.log(findObjects(searchCriteria2, items));

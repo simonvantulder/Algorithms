@@ -30,8 +30,8 @@ function orderedIntersection(sortedA, sortedB) {
     newArr = [];
     freq = {};
     for(var i = 0; i < sortedB.length; i++){
-        if(setA.has(sortedB[i]) && !freq.hasOwnProperty(sortedB[i]) ){ //&& freq !has sorted[i] 
-            //add to freq
+        if(setA.has(sortedB[i]) && !freq.hasOwnProperty(sortedB[i]) ){ // && freq !have sorted[i] 
+            //add to freq, skip duplicates
             freq[sortedB[i]]++;
             newArr.push(sortedB[i]);
         }

@@ -19,7 +19,7 @@ const expected = [1, 2, 2, 2, 6, 6, 7];
  * Combines two already sorted multiset arrays into an ordered multiset union
  * Venn Diagram Visualization (top):
  * https://i.ytimg.com/vi/sdflTUW6gHo/maxresdefault.jpg
- * - Time: O(?).
+ * - Time: O(n).
  * - Space: O(?).
  * @param {Array<number>} sortedA Both sets are sorted multisets
  *    (contain dupes).
@@ -33,23 +33,30 @@ function orderedMultisetUnion(sortedA, sortedB) {
     let indexA = 0;
     let indexB = 0;
     let resultArray = [];
+
+    //while inbounds continue
     while (indexA < sortedA.length && indexB < sortedB.length) {
+        //push the smaller of the two vals @ index
         if (sortedA[indexA] < sortedB[indexB]) {
             resultArray.push(sortedA[indexA]);
             indexA++;
+        //push the smaller of the two vals @ index
         } else if (sortedA[indexA] > sortedB[indexB]) {
             resultArray.push(sortedB[indexB]);
             indexB++;
+        //push the one of the two values @ index
         } else if (sortedA[indexA] == sortedB[indexB]) {
             resultArray.push(sortedA[indexA]);
             indexA++;
             indexB++;
         }
     }
+    //finish pushing any remaining values
     while (indexA < sortedA.length) {
         resultArray.push(sortedA[indexA]);
         indexA++;
     }
+    //finish pushing any remaining values
     while (indexB < sortedB.length) {
         resultArray.push(sortedB[indexB]);
         indexB++;
@@ -96,18 +103,18 @@ function diagonalDifference(sqrMatrix) {
     let counter = 0;
     let sum1 = sum2 = 0;
     let result = 0;
+    // traverse the array grid diagonally top left->bottom right
     for (let i = 0; i < sqrMatrix.length; i++) {
         sum1 += sqrMatrix[i][i];
     }
+    // traverse the array grid diagonally top right->bottom left
     for (let j = sqrMatrix.length - 1; j >= 0; j--) {
         sum2 += sqrMatrix[j][counter];
         counter++;
     }
-    result = sum1 - sum2;
-    if (result < 0) {
-        result *= -1;
-    }
-    return result;
+    
+    // return abs val of sum1 - sum2
+    return sum1 - sum2 < 0 ? (sum1 - sum2) * -1 : sum1 - sum2;
 }
 
 console.log(diagonalDifference(squareMatrix2));

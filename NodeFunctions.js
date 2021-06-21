@@ -49,74 +49,75 @@ class BinarySearchTree {
      * Retrieves the smallest integer data from this tree.
      * - Time: O(?).
      * - Space: O(?).
-     * @param {Node} current The node that is currently accessed from the tree as
+     * @param {Node} runner The node that is runnerly accessed from the tree as
      *    the tree is being traversed.
      * @returns {number} The smallest integer from this tree.
      */
-    min(current = this.root) {
+    min(runner = this.root) {
         if(this.root == null){
             return null;
         }
-        while(current.left != null)
+        while(runner.left != null)
         {
-            current = current.left;
+            runner = runner.left;
         }
-        return current.data;
+        return runner.data;
     }
 
     /**
      * Retrieves the smallest integer data from this tree.
      * - Time: O(?).
      * - Space: O(?).
-     * @param {Node} current The node that is currently accessed from the tree as
+     * @param {Node} runner The node that is runnerly accessed from the tree as
      *    the tree is being traversed.
      * @returns {number} The smallest integer from this tree.
      */
-    minRecursive(current = this.root) {
+    minRecursive(runner = this.root) {
         if(this.root == null){
             return null;
         }
-        if(current.left == null){
-            return current.data;
+        if(runner.left == null){
+            return runner.data;
         }
-        return this.minRecursive(current.left);
+        return this.minRecursive(runner.left);
     }
 
     /**
      * Retrieves the largest integer data from this tree.
      * - Time: O(?).
      * - Space: O(?).
-     * @param {Node} current The node that is currently accessed from the tree as
+     * @param {Node} runner The node that is runnerly accessed from the tree as
      *    the tree is being traversed.
      * @returns {number} The largest integer from this tree.
      */
-    max(current = this.root) { 
+    max(runner = this.root) { 
         if(this.root == null){
             return null;
         }
-        while(current.right != null)
+        while(runner.right != null)
         {
-            current = current.right;
+            runner = runner.right;
         }
-        return current.data;
+        return runner.data;
     }
 
     /**
      * Retrieves the largest integer data from this tree.
      * - Time: O(?).
      * - Space: O(?).
-     * @param {Node} current The node that is currently accessed from the tree as
+     * @param {Node} runner The node that is runnerly accessed from the tree as
      *    the tree is being traversed.
      * @returns {number} The largest integer from this tree.
      */
-    maxRecursive(current = this.root) {
+    maxRecursive(runner = this.root) {
         if(this.root == null){
             return null;
         }
-        if(current.right == null){
-            return current.data;
+        if(runner.right == null){
+            return runner.data;
         }
-        return this.maxRecursive(current.right);
+        // max is at the bottom right of the tree...keep going
+        return this.maxRecursive(runner.right);
     }
 
     // Logs this tree horizontally with the root on the left.
@@ -136,24 +137,40 @@ class BinarySearchTree {
         this.print(node.left, spaceCnt);
     }
 
-
-
-    maxRecursive1(current = this.root) {
-        if(this.root == null){
-            return null;
+    // Time Complexity : O(h), where h is height of binary search tree. In worst case the height is equal to number of nodes.
+    // Space Complexity: O(1).
+    insertRecursive(data, runner = this.root){
+        const newNode = new Node(data)
+        
+        if(this.root === null){
+            this.root = newNode;
+            return this;
+        } 
+        if(data > runner.data && runner.right !== null){
+            runner = runner.right;
         }
-        if(current.right == null){
-            return current.data;
+        if(data <= runner.data && runner.left !== null){
+            runner = runner.left;
         }
-        return this.maxRecursive1(current.right);
+        // end of tree if we get here
+        else if(data > runner.data){
+            runner.right = newNode;
+            return this;
+        }
+        else if(data < runner.data){
+            runner.left = newNode;
+            return this;
+        }
+        return this.insertRecursive(data, runner);
+
     }
     
 }
-twoNodeTree.maxRecursive();
 
 const emptyTree = new BinarySearchTree();
 const oneNodeTree = new BinarySearchTree();
 oneNodeTree.root = new Node(10);
+// twoNodeTree.maxRecursive();
 
 /* twoLevelTree
         root
@@ -177,23 +194,21 @@ twoLevelTree.root.right = new Node(15);
     4    12  18  24  31  44 66  90
 */
 /***************** Uncomment after insert method is created. ****************/
-// const fullTree = new BinarySearchTree();
-// fullTree
-//   .insert(25)
-//   .insert(15)
-//   .insert(10)
-//   .insert(22)
-//   .insert(4)
-//   .insert(12)
-//   .insert(18)
-//   .insert(24)
-//   .insert(50)
-//   .insert(35)
-//   .insert(70)
-//   .insert(31)
-//   .insert(44)
-//   .insert(66)
-//   .insert(90);
-
-
-
+const fullTree = new BinarySearchTree();
+fullTree
+  .insertRecursive(25)
+  .insertRecursive(15)
+  .insertRecursive(10)
+  .insertRecursive(22)
+  .insertRecursive(4)
+  .insertRecursive(12)
+  .insertRecursive(18)
+  .insertRecursive(24)
+  .insertRecursive(50)
+  .insertRecursive(35)
+  .insertRecursive(70)
+  .insertRecursive(31)
+  .insertRecursive(44)
+  .insertRecursive(66)
+  .insertRecursive(90)
+  .print();

@@ -16,7 +16,7 @@ class TwoStackQueue {
     this.stack1 = new Stack();
     this.stack2 = new Stack();
   }
-  
+
 
   /**
    * Adds a new item to the back of the queue.
@@ -41,8 +41,7 @@ class TwoStackQueue {
    * - Space: O(?).
    * @returns {any} The removed item.
    */
-  dequeue() 
-  {
+  dequeue() {
     // move everything in stack1 to stack2
     if (this.stack2.isEmpty()) {
       while (!stack1.isEmpty()) {
@@ -52,40 +51,40 @@ class TwoStackQueue {
     // pop stack2 and return it
     return this.stack2.pop();
   }
+
+  enqueue(val) {
+    const newTail = new Node(val);
+
+    if (this.isEmpty()) {
+      this.head = newTail;
+      this.tail = newTail;
+    } else {
+      this.tail.next = newTail;
+      this.tail = newTail;
+    }
+    // pre-increment so the new size is returned otherwise old size is returned
+    return ++this.size;
+  }
+
+  // Time: O(1) constant
+  // Space: O(1)
+  dequeue() {
+    // remove head
+    if (!this.head) {
+      return null;
+    }
+
+    const dequeued = this.head;
+    this.head = this.head.next;
+
+    if (this.head === null) {
+      this.tail = null;
+    }
+
+    this.size--;
+    return dequeued.data;
+  }
 }
-  // enqueue(val) {
-  //   const newTail = new Node(val);
-
-  //   if (this.isEmpty()) {
-  //     this.head = newTail;
-  //     this.tail = newTail;
-  //   } else {
-  //     this.tail.next = newTail;
-  //     this.tail = newTail;
-  //   }
-  //   // pre-increment so the new size is returned otherwise old size is returned
-  //   return ++this.size;
-  // }
-
-  // // Time: O(1) constant
-  // // Space: O(1)
-  // dequeue() {
-  //   // remove head
-  //   if (!this.head) {
-  //     return null;
-  //   }
-
-  //   const dequeued = this.head;
-  //   this.head = this.head.next;
-
-  //   if (this.head === null) {
-  //     this.tail = null;
-  //   }
-
-  //   this.size--;
-  //   return dequeued.data;
-  // }
-
 /*
  * 
 */
@@ -94,7 +93,7 @@ sumOfHalvesEqual(q1)
 {
   let sum1 = 0;
   let i = 0;
-  while(i < this.size()/2){
+  while (i < this.size() / 2) {
     //dequeue
     sum1 += this.front();
     this.enqueue(this.dequeue())

@@ -45,13 +45,13 @@ const expected3 = [4, 5];
  */
 function symmetricDifferences(numsA, numsB) {
     const disjunctiveUnion = [];
-
+    //push items in A taht are not in B
     for (const n of numsA) {
-        if (numsB.includes(n) === false && disjunctiveUnion.includes(n) === false) {
+        if (!numsB.includes(n) && disjunctiveUnion.includes(n) === false) {
             disjunctiveUnion.push(n);
         }
     }
-
+    // push items in B that are not in A
     for (const n of numsB) {
         if (!numsA.includes(n) && !disjunctiveUnion.includes(n)) {
             disjunctiveUnion.push(n);
@@ -81,12 +81,14 @@ function symmetricDifferencesHashTable(numsA, numsB) {
         seenB[num] = num;
     }
 
+        // push items in A that are not in B
     for (const key in seenA) {
-        if (seenB.hasOwnProperty(key) === false) {
+        if (!seenB.hasOwnProperty(key)) {
             disjunctiveUnion.push(seenA[key]);
         }
     }
 
+        // push items in B that are not in A
     for (const key in seenB) {
         if (seenA.hasOwnProperty(key) === false) {
             disjunctiveUnion.push(seenB[key]);
