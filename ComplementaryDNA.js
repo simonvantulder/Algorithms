@@ -1,7 +1,6 @@
 /**
  * Returns a 2d array of key value pairs from the given obj.
  * - Time: O(n).
- * - Space: O(n).
  * @param {String} dna
  * @returns {String} complementaryDNA
  */

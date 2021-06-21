@@ -1,9 +1,4 @@
 /* 
-    - Visualization with playing cards (scroll down):
-    https://www.khanacademy.org/computing/computer-science/algorithms/insertion-sort/a/insertion-sort
-    - Array / bar visualization:
-    https://www.hackerearth.com/practice/algorithms/sorting/insertion-sort/visualize/
-    - Stable sort, efficient for small data sets or mostly sorted data sets.
     Time Complexity
     - Best: O(n) linear when array is already sorted.
     - Average: O(n^2) quadratic.
