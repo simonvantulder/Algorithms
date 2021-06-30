@@ -1,28 +1,44 @@
-//test
-//test2
 
-function fountainActivation(locations){
-    // need to find the fewest # fountains that cover the entire garden
-    // ith fountain (1<= i <= locations.length) has coverage limit locations[i] w/ max (i-locations[i],1) & min ((i+locations[i])), locations.length)
+function fountainActivation(locations) {
+    // dp[i]: Stores the position of leftmost fountain that can be covered by water of left side of the i-th fountain, updated below on ln64
+    let dp = [];
 
-    // Initialize a variable countFountain to store the minimum number of fountains that need to be activated.
-    let countFountain = 0
-    //stores the max range of the fountain
-    let xMax = 0 - locations[0];
 
-    //stores the min range of the current fountain
-    let xMin = 0 + locations[0];
-    //steps:
-    // loop through the array and for every ith fountain, find the rightmost fountain which still covers the start.
+    // Stores index of leftmost fountain
+    let idxLeft;
+    // Stores index of rightmost fountain
+    // in the range of i-th fountain
+    let idxRight;
+
+    // Traverse the array
     for (let i = 0; i < locations.length; i++) {
-        if(i + locations[i] <= xMin && i - locations[i] > xMax){
-            xMin = i + locations[i];
-            countFountain++;
+        idxLeft = Math.max(i - locations[i], 0);
+        idxRight = Math.min(i + (locations[i] + 1), locations.length);
+        dp[idxLeft] = idxRight;
+    }
+
+    // Stores count of fountains
+    // needed to be activated
+    let cntfount = 1;
+
+    // Stores index of next fountain
+    // that needed to be activated
+    let idxNext = 0;
+    idxRight = dp[0];
+
+    // Traverse dp[] array
+    for (let i = 0; i < locations.length; i++) {
+        idxNext = Math.max(idxNext, dp[i]);
+
+        // If left most fountain
+        // cover all its range
+        if (i == idxRight) {
+            cntfount++;
+            idxRight = idxNext;
         }
     }
-    // Then, find the rightmost fountain that the rightmost fountain obtained in the above step covers up to and update it.
-    while()
-
-    // Now, traverse the array and keep activating the fountains from left to right that covers maximum fountains currently on the right and increment countFountain by 1. 
-    
+    return cntfount;
 }
+
+let locations = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+console.log(minCntFoun(locations));
