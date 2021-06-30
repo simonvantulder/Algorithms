@@ -1,4 +1,5 @@
 //test
+//test2
 
 function fountainActivation(locations){
     // need to find the fewest # fountains that cover the entire garden
