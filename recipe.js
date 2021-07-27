@@ -1,8 +1,8 @@
 function cakes(recipe, available) {
 
-    // if(recipe.keys().length === 0 || available.keys().length === 0){
-    //     return 0;
-    // }
+    if(Object.keys(recipe).length === 0 || Object.keys(recipe).length === 0){
+        return 0;
+    }
     let recipeBatches = Infinity;
     for (let i in recipe) {
         if(available.hasOwnProperty(i)){
