@@ -30,7 +30,7 @@ console.log(
 // must return 0
 // console.log( cakes({apples: 3, flour: 300, sugar: 150, milk: 100, oil: 100}, {sugar: 500, flour: 2000, milk: 2000}));
 
-// =============== solutionn 2 from codewars =================
+// =============== solution 2 from codewars =================
 
 function cakes(recipe, available) {
     var numCakes = [];
